@@ -1,0 +1,5 @@
+insert into Habilidade (Nome) values ('C#')
+insert into Habilidade (Nome) values ('Java')
+insert into Habilidade (Nome) values ('Angular')
+insert into Habilidade (Nome) values ('SQL')
+insert into Habilidade (Nome) values ('ASP')

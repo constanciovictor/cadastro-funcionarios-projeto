@@ -1,0 +1,52 @@
+<div class="col-md-6 user-container">
+    <h2 class="text-center">Editar Funcionário</h2>
+    <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+      <div hidden="true">
+        <input type="text" formControlName="id" placeholder="id" name="id" class="form-control" id="id">
+      </div>
+      <div hidden="true">
+        <input type="text" formControlName="idade" placeholder="idade" name="idade" class="form-control" id="idade">
+      </div>
+      <div hidden="true">
+        <input type="text" formControlName="status" placeholder="status" name="status" class="form-control" id="status">
+      </div>
+      <div class="form-group">
+        <label for="username">Nome Completo:</label>
+        <input type="text" formControlName="nome" placeholder="nome" name="nome" class="form-control" id="nome">
+      </div>
+  
+      <div class="form-group">
+        <label for="password">Dt. Nascimento:</label>
+        <input type="date" formControlName="dtNascimento" placeholder="data nascimento" name="dtNascimento" class="form-control" id="dtNascimento" [ngModel] ="dataNascimento | date:'yyyy-MM-dd'" >
+      </div>
+  
+      <div class="form-group">
+        <label for="firstName">E-mail:</label>
+        <input formControlName="email" placeholder="e-mail" name="firstName" class="form-control" id="email">
+      </div>
+  
+      <div class="form-group">
+        <label for="lastName">Sexo:</label>
+        <select formControlName="sexo" class="custom-select">
+            <option value="0" selected="true">Selecione</option>
+            <option value="1">Masculino</option>
+            <option value="2">Feminino</option>
+         </select>
+      </div>
+  
+      <div class="form-group">
+        <label>Habilidades:</label>
+        <ng-multiselect-dropdown
+            [placeholder]="'Selecione Habilidades'"
+            [settings]="dropdownSettings"
+            [(ngModel)]="selectedItems"
+            [data]="dropdownList"
+            formControlName="habilidades"
+            [disabled]="false">
+        </ng-multiselect-dropdown>
+      </div>
+  
+      <button class="btn btn-success" type="button" (click)="onSubmit()">Salvar</button>
+    </form>
+  </div>
+  

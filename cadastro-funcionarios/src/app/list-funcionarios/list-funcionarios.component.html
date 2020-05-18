@@ -1,0 +1,78 @@
+<div class="container text-center">
+  <h1>Listar Funcionários</h1>
+</div>
+<div class="container input-group">
+  
+  <form [formGroup]="addForm">
+    <div class="row">
+      <div class="col-md-2 form-group">
+        <label for="username">Idade:</label>
+        <input type="number" formControlName="idade" placeholder="idade" name="idade" class="form-control" id="idade">
+      </div>
+    
+      <div class="col-md-2 form-group">
+        <label for="lastName">Sexo:</label>
+        <select formControlName="sexo" class="custom-select">
+            <option value="0" selected="true">Selecione</option>
+            <option value="1">Masculino</option>
+            <option value="2">Feminino</option>
+        </select>
+      </div>
+
+
+    <div class="col-md-4 form-group">
+      <label>Habilidades:</label>
+      <ng-multiselect-dropdown
+          [placeholder]="'Selecione Habilidades'"
+          [settings]="dropdownSettings"
+          [(ngModel)]="selectedItems"
+          [data]="dropdownList"
+          formControlName="habilidades"
+          [disabled]="false">
+      </ng-multiselect-dropdown>
+    </div>
+
+    <div class="col-md-4 form-group">
+      <label for="firstName">Nome:</label>
+      <input formControlName="nome" placeholder="nome" name="nome" class="form-control" id="nome">
+    </div>
+
+  </div>
+    <button class="btn btn-success" type="button" (click)="onSubmit()">Pesquisar</button>
+  </form>
+</div>
+
+<br>
+
+<div class="container">
+  <div class="row">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Data Nascimento</th>
+      <th>Idade</th>
+      <th>E-mail</th>
+      <th>Sexo</th>
+      <th>Status</th>
+      <th>Habilidades</th>      
+      <th>Editar</th>
+      <th>Ativar / Desativar</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let funcionario of listFuncionarios">      
+      <td>{{funcionario.nome}}</td>
+      <td>{{funcionario.dtNascimento | date: 'dd/MM/yyyy'}}</td>
+      <td>{{funcionario.idade}}</td>
+      <td>{{funcionario.email}}</td>
+      <td>{{funcionario.sexo}}</td>
+      <td>{{funcionario.status}}</td>
+      <td>{{funcionario.habilidadesConcat}}</td>
+      <td><button class="btn btn-success" (click)="editFuncionario(funcionario)" style="margin-left: 20px;"> Edit</button></td>
+      <td><button class="btn btn-success" (click)="ativarDesativarFuncionario(funcionario)"> Ativar/Desativar</button></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</div>
